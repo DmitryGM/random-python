@@ -16,13 +16,18 @@ def fx(words):
     """
     ['tix', 'xyz', 'apple', 'xacadu', 'aabbbccc'] -> ['aabbbccc', 'apple', 'tix']
     :param words: list of strings
-    :return: sorted list of strings with the exception of all strings started with 'x'
+    :return: sorted list of strings with the exception of all strings started with 'x',
+    which are included in the top of the list
     """
+    res_x = []
     res = []
     for word in sorted(words):
-        if word[0] != 'x':
+        if word[0] == 'x':
+            res_x.append(word)
+        else:
             res.append(word)
-    return res
+
+    return res_x + res
 
 
 def sort_tuples(list_tuples):
