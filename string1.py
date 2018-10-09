@@ -18,7 +18,6 @@ print(start_end_symbols('welcome'))
 
 
 # Example: 'bibble' -> 'bi**le'
-# s.replace(stra, strb)
 def replace_char(s):
     return s[0] + s[1:].replace(s[0], '*')
 
