@@ -1,4 +1,3 @@
-#!/usr/bin/python
 
 
 def me(words):
@@ -35,9 +34,9 @@ def sort_tuples(list_tuples):
     return sorted(list_tuples, key=lambda x: x[-1])
 
 
-print(fx(['tix', 'xyz', 'apple', 'xacadu', 'aabbbccc']))
+def main():
+    print(fx(['tix', 'xyz', 'apple', 'xacadu', 'aabbbccc']))
 
 
 if __name__ == '__main__':
-    pass
-    #main()
+    main()

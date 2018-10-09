@@ -1,4 +1,3 @@
-#!/usr/bin/python
 
 
 def v(s):
@@ -12,16 +11,20 @@ def v(s):
         return s + 'ly'
 
 
-
 def nb(s):
     """
     So 'This music is not so bad!' -> This music is good!
     :param s: string
     :return: Replase substring from 'not' to 'bad'. ('bad' after 'not') to 'good'.
     """
-    print(s.find('not'))
-    print(s.find('bad'))
+    # print(s.find('not'))
+    # print(s.find('bad'))
     return s[:s.find('not')] + 'good' + s[s.find('bad') + 3:]
 
 
-print(nb('This music is not so bad!'))
+def main():
+    print(nb('This music is not so bad!'))
+
+
+if __name__ == '__main__':
+    main()

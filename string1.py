@@ -40,15 +40,14 @@ print(str_mix('dog', 'dinner'))
 # Provided simple test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
 def test(res, expt):
-    pass
+    assert res == expt
+    print(f'Test done: {res}')
 
 
-# test(start_end_symbols('welcome'), 'weme')
-#
-# test(replace_char('bibble'), 'bi**le')
-
+def main():
+    test(start_end_symbols('welcome'), 'weme')
+    test(replace_char('bibble'), 'bi**le')
 
 
 if __name__ == '__main__':
-    pass
-    #main()
+    main()
