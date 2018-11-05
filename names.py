@@ -15,19 +15,13 @@ def extr_name(filename):
 
 
     lst = tree.xpath('//table[1]/tr/td/text()')
-    males = []
-    females = []
 
-    for i in range(30):
-        if i % 3 == 1:
-            males.append(lst[i])
-        if i % 3 == 2:
-            females.append(lst[i])
+    res = []
+    for i in range(len(lst) // 3):
+        res.append(f'{lst[3*i+1]} {i+1}')
+        res.append(f'{lst[3*i+2]} {i+1}')
 
-    print(males)
-    print(females)
-
-    return
+    return [filename[4:8]] + sorted(res)
 
 
 def main():
@@ -41,5 +35,5 @@ def main():
 
 
 if __name__ == '__main__':
-    extr_name('name2006.html')
+    print(extr_name('name2006.html')[:11])
     #main()
