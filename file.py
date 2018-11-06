@@ -4,6 +4,10 @@ import re
 
 
 def mem_dict(filename):
+    """
+    :param filename:
+    :return: dict: each word maps to list of words
+    """
     file = open(filename, 'r')
     string = file.read()
 
@@ -24,6 +28,11 @@ def mem_dict(filename):
 
 
 def generate(d, n):
+    """
+    :param d: dict
+    :param n: number words in the final text
+    :return: string (final text)
+    """
     res = ['']
     for i in range(n):
         last_word = res[i]
