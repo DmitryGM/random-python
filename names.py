@@ -13,7 +13,6 @@ def extr_name(filename):
 
     tree = html.fromstring(string)
 
-
     lst = tree.xpath('//table[1]/tr/td/text()')
 
     res = []
@@ -35,5 +34,5 @@ def main():
 
 
 if __name__ == '__main__':
-    print(extr_name('name2006.html')[:11])
-    #main()
+    print(extr_name('D:\\random-python\\name2006.html')[:11])
+    # main()

@@ -51,5 +51,5 @@ def main():
 
 
 if __name__ == '__main__':
-    print(generate(mem_dict('file.txt'), 10))
+    print(generate(mem_dict('D:\\random-python\\file.txt'), 10))
     # main()
