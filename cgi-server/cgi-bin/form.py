@@ -132,9 +132,6 @@ response = requests.get(f'https://www.google.com/search?newwindow=1&biw=1858&bih
 tree = html.fromstring(response.content)
 lst = tree.xpath("//table[@class='images_table']/tr/td/a/img")
 
-
-
-
 print("Content-type: text/html\n")
 print("""<!DOCTYPE HTML>
         <html>

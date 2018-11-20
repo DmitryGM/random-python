@@ -20,7 +20,7 @@ def extr_name(filename):
         res.append(f'{lst[3*i+1]} {i+1}')
         res.append(f'{lst[3*i+2]} {i+1}')
 
-    return [filename[4:8]] + sorted(res)
+    return [filename[4:8]] + res[:20] #sorted(res)
 
 
 def main():
@@ -30,9 +30,9 @@ def main():
         sys.exit(1)
 
     for arg in args:
-        extr_name(arg)
+        print(extr_name(arg)) # [:20 + 1]
 
 
 if __name__ == '__main__':
-    print(extr_name('D:\\random-python\\name2006.html')[:11])
-    # main()
+    # print(extr_name('D:\\random-python\\name2006.html')[:11])
+    main()

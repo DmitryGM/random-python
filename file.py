@@ -11,8 +11,8 @@ def mem_dict(filename):
     file = open(filename, 'r')
     string = file.read()
 
-    lst = re.findall(r'[\w]+', string)
-    print(lst)
+    lst = re.findall(r'\w+', string)
+    # print(lst)
 
     s = set()
     d = dict()
@@ -47,9 +47,9 @@ def main():
         sys.exit(1)
 
     filename = sys.argv[1]
-    pass
+    print(generate(mem_dict(filename), 10))
 
 
 if __name__ == '__main__':
-    print(generate(mem_dict('D:\\random-python\\file.txt'), 10))
-    # main()
+    # print(generate(mem_dict('D:\\random-python\\file.txt'), 10))
+    main()
