@@ -25,6 +25,9 @@ if (new_rss != "null"):
     db.rss.insert_one({'src': new_rss})
 
 # Update DB:
+# https://habr.com/rss/interesting/
+# https://news.yandex.ru/world.rss
+
 for rss in db.rss.find():
     try:
         print(rss['src'])
@@ -39,32 +42,6 @@ for rss in db.rss.find():
                 db.test.insert_one(doc)
     except:
         pass
-
-# # doc = {'name': 'Name', 'surname': 'Surname'}
-# # db.test.insert_one(doc)
-# # # db.test.save(doc)
-# # # db.test.replace_one(doc)
-#
-# # for man in db.test.find():
-# #     print(man)
-#
-# # https://habr.com/rss/interesting/
-# response = requests.get('https://news.yandex.ru/world.rss')
-# root = ElementTree.fromstring(response.content)
-#
-# # # debug:
-# # print('Online:')
-# # for a, b in zip(root.iter('guid'), list(root.iter('title'))[2:]):
-# #     print(a.text, b.text)
-#
-# # db.test.find({'src': 'https://habr.com/post/431936/'})
-#
-# for src, title in zip(root.iter('guid'), list(root.iter('title'))[2:]):
-#     doc = {'title': title.text, 'src': src.text}
-#
-#     if not list(db.test.find(doc)):
-#         # print('NEW!')
-#         db.test.insert_one(doc)
 
 print("""<!DOCTYPE HTML>
 <html>
