@@ -3,28 +3,32 @@ import copy
 
 
 
-def reader():
+def reader(filename: str):
     global n, m
-    with open('input.txt', 'r') as file:
+    with open(filename, 'r') as file:
         n = int(file.readline())
         m = [[0]*n for _ in range(n)]
         for i in range(n):
             s = file.readline().split(' ')
             for j in range(n):
-                m[i][j] = int(s[j])
+                m[i][j] = -1 if '-' in s[j] else int(s[j])
 
 
 def checker():
     global n, m
     for i in range(n):
         for j in range(i, n):
-            if m[i][j] != m[j][i]:
-                print(f'(i,j) != ({i},{j})')
+            assert m[i][j] == m[j][i]
+            # if m[i][j] != m[j][i]:
+            #     print(f'(i,j) != ({i},{j})')
+
 
 def print_matrix(m):
     n = len(m)
+    print(' '*3 + ' '.join(list(map(lambda x: f' {x}' if x < 10 else str(x), range(n)))))
+
     for i in range(n):
-        print(' '.join(list(map(lambda x: f' {x}' if x >= 0 else f'{x}', m[i]))))
+        print((f'{i} ' if i < 10 else str(i)) + ' ' + ' '.join(list(map(lambda x: f' {x}' if x >= 0 else f'--', m[i]))))
     print()
 
 
@@ -55,6 +59,8 @@ def foo():
         lst = list(zip(range(n), r))
         lst2 = list(reversed(sorted(lst, key=lambda p: p[1])))
 
+        print(lst2)
+
         for i, _ in lst2:
             if colors[i] != -1:
                 continue
@@ -71,7 +77,7 @@ def foo():
                 need_continue = True
         k += 1
         print(colors)
-
+        print()
 
     return colors
 
@@ -173,9 +179,10 @@ def frank_fish(n, m):
     # Исходный граф:
     step = 0
     print(f'step = {step}')
+    print('Source graph:')
     print_matrix(m)
 
-    for step in range(1, 5):
+    for step in range(1, 6):
         print(f'step = {step}')
 
         # cut:
@@ -195,8 +202,9 @@ def frank_fish(n, m):
                     merged[i] = j
 
         # update merged
-        need_next = False
+        need_next = True
         while need_next:
+            need_next = False
             for i in range(len(merged)):
                 if merged[i] != i and merged[i] != merged[merged[i]]:
                     merged[i] = merged[merged[i]]
@@ -217,6 +225,7 @@ def frank_fish(n, m):
                     for k in range(n):
                         if k != i:
                             m[k][i] = max(m[k][i], m[k][j])
+                            m[i][k] = m[k][i]
         print(lst)
 
         new_m = [[-1] * n for _ in range(n)]
@@ -224,11 +233,9 @@ def frank_fish(n, m):
             for j in range(n):
                 if merged[i] == i and merged[j] == j:
                     new_m[i][j] = m[i][j]
-        for i in range(n):
-            for j in range(n):
-                pass
 
         m = new_m
+        checker()
         print_matrix(m)
 
 
@@ -240,11 +247,11 @@ if __name__ == '__main__':
     pass
 
 
-reader()
+reader('input-12.txt')
 checker()
 # foo()
 
-# positions(m, n)
+positions(m, n)
 
 # dijkstra()
-frank_fish(n, m)
+# frank_fish(n, m)
