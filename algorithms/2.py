@@ -1,0 +1,28 @@
+import math
+import copy
+
+
+
+def reader(filename: str):
+    global n, m
+    with open(filename, 'r') as file:
+        n = int(file.readline())
+        m = [[0]*n for _ in range(n)]
+        for i in range(n):
+            s = file.readline().split(' ')
+            for j in range(n):
+                m[i][j] = -1 if '-' in s[j] else int(s[j])
+
+
+def checker():
+    global n, m
+    for i in range(n):
+        for j in range(i, n):
+            assert m[i][j] == m[j][i]
+            # if m[i][j] != m[j][i]:
+            #     print(f'(i,j) != ({i},{j})')
+
+
+
+if __name__ == '__main__':
+    pass
