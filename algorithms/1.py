@@ -3,8 +3,8 @@ import copy
 from helper import print_matrix, checker, reader
 
 
-def get_neighbors(i):
-    global n, m
+def get_neighbors(m, i):
+    n = len(m)
     res = []
     for j in range(n):
         if m[i][j] != 0 and m[i][j] != -1:
@@ -13,8 +13,8 @@ def get_neighbors(i):
 
 
 # 1. Алгоритм, использующий упорядочивание вершин
-def coloring():
-    global m, n
+def coloring(m):
+    n = len(m)
 
     colors = [-1]*n
     k = 1
@@ -36,7 +36,7 @@ def coloring():
             if colors[i] != -1:
                 continue
             can_color = True
-            for j in get_neighbors(i):
+            for j in get_neighbors(m, i):
                 if colors[j] == k:
                     can_color = False
             if can_color:
@@ -54,8 +54,8 @@ def coloring():
 
 
 # 2. Дейкстра
-def dijkstra():
-    global m, n
+def dijkstra(m):
+    n = len(m)
 
     mm = copy.deepcopy(m)
 
@@ -106,7 +106,8 @@ def dijkstra():
 
 
 # 3. Поиск пропускной способности алгоритмом Франка-Фриша
-def frank_fish(n, m):
+def frank_fish(m):
+    n = len(m)
     merged = [i for i in range(n)]
 
     # Исходный граф:
@@ -168,22 +169,22 @@ def frank_fish(n, m):
                     new_m[i][j] = m[i][j]
 
         m = new_m
-        checker()
+        checker(m)
         print_matrix(m)
 
 
 def main():
-    reader('input-19.txt')
-    checker()
+    n, m = reader('input-19.txt')
+    checker(m)
 
     # Раскраска
-    # coloring()
+    coloring(m)
 
     # Кратчайшие пути
-    # dijkstra()
+    dijkstra(m)
 
     # Макс. пропускная способность
-    frank_fish(n, m)
+    frank_fish(m)
 
 
 if __name__ == '__main__':
