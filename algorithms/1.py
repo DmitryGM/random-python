@@ -13,7 +13,7 @@ def get_neighbors(i):
 
 
 # 1. Алгоритм, использующий упорядочивание вершин
-def foo():
+def coloring():
     global m, n
 
     colors = [-1]*n
@@ -53,45 +53,7 @@ def foo():
     return colors
 
 
-# 2. Размещение элементов методом обратного размещения
-def positions(m, n):
-    p = [[1, 2, 3, 4],
-         [5, 6, 7, 8],
-         [9, 10, 11, 12]]
-
-    def get_pair(x):
-        x -= 1
-        return ((x % 4), int(x / 4))
-
-    dp = [[0]*12 for _ in range(12)]
-
-    for i in range(12):
-        for j in range(12):
-            x1, y1 = get_pair(i+1)
-            x2, y2 = get_pair(j+1)
-            dp[i][j] = abs(x1 - x2) + abs(y1 - y2)
-
-    print_matrix(dp)
-
-    # Ri
-    r = [0]*n
-    for i in range(n):
-        for j in get_neighbors(i):
-            r[i] += m[i][j]
-    r = sorted(list(zip(r, range(1, n+1))))
-
-    # Di
-    d = [0]*n
-    for i in range(n):
-        for j in range(n):
-            d[i] += dp[i][j]
-    d = sorted(list(zip(d, range(1, n+1))), key=lambda p: -p[0])
-
-    print(r)
-    print(d)
-
-
-# 3. Дейкстра
+# 2. Дейкстра
 def dijkstra():
     global m, n
 
@@ -143,7 +105,7 @@ def dijkstra():
         print(min_i)
 
 
-# 4. Поиск пропускной способности алгоритмом Франка-Фриша
+# 3. Поиск пропускной способности алгоритмом Франка-Фриша
 def frank_fish(n, m):
     merged = [i for i in range(n)]
 
@@ -210,22 +172,20 @@ def frank_fish(n, m):
         print_matrix(m)
 
 
+def main():
+    reader('input-19.txt')
+    checker()
 
+    # Раскраска
+    # coloring()
 
+    # Кратчайшие пути
+    # dijkstra()
+
+    # Макс. пропускная способность
+    frank_fish(n, m)
 
 
 if __name__ == '__main__':
-    pass
+    main()
 
-
-reader('input-17.txt')
-checker()
-
-print_matrix(m)
-
-# foo()
-
-# positions(m, n)
-
-# dijkstra()
-frank_fish(n, m)
