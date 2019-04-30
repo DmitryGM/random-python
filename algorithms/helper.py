@@ -22,7 +22,7 @@ def checker(m):
             #     print(f'(i,j) != ({i},{j})')
 
 
-def print_matrix(m):
+def print_matrix(m: list):
     n = len(m)
     print(' '*3 + ' '.join(list(map(lambda x: f' {x}' if x < 10 else str(x), range(n)))))
 
