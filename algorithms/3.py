@@ -51,12 +51,23 @@ n = number_ones(a)
 print(f'n = {n}')
 matrix = [[0]*n for _ in range(n)]
 
+edge_number = 0
+
+d = dict()
+for i in range(12):
+    for j in range(12):
+        if a[i][j] == 1:
+            d[(i, j)] = edge_number
+            edge_number += 1
+
+
 for i in range(12):
     for j in range(12):
         if a[i][j] == 0:
             continue
         assert a[i][j] == 1
         assert i < j
+
         count = 0
         b = []
 
@@ -74,8 +85,11 @@ for i in range(12):
                    count += 1
                    b.append((kk+1, mm+1))
 
-                   matrix[kk][mm] = 1
-                   matrix[mm][kk] = 1
+                   e1 = d[(kk, mm)]
+                   e2 = d[(i, j)]
+
+                   matrix[e1][e2] = 1
+                   matrix[e2][e1] = 1
 
         print(f'i, j, count = {i+1, j+1, count}')
         print(b)
