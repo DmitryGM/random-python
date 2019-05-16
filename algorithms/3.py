@@ -31,21 +31,22 @@ def read_matrix():
 
 
 
-_, a = read_matrix()
+# _, a = read_matrix()
 
-# #         1  2  3  4  5  6  7  8  9 10 11 12
-# a.append([0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]) # 1
-# a.append([0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]) # 2
-# a.append([0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1]) # 3
-# a.append([0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0]) # 4
-# a.append([0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0]) # 5
-# a.append([0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0]) # 6
-# a.append([0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0]) # 7
-# a.append([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0]) # 8
-# a.append([0] * 12) # 9
-# a.append([0] * 12) # 10
-# a.append([0] * 12) # 11
-# a.append([0] * 12) # 12
+a = []
+#         1  2  3  4  5  6  7  8  9 10 11 12
+a.append([0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]) # 1
+a.append([0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]) # 2
+a.append([0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1]) # 3
+a.append([0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0]) # 4
+a.append([0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0]) # 5
+a.append([0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0]) # 6
+a.append([0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0]) # 7
+a.append([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0]) # 8
+a.append([0] * 12) # 9
+a.append([0] * 12) # 10
+a.append([0] * 12) # 11
+a.append([0] * 12) # 12
 
 n = number_ones(a)
 print(f'n = {n}')
@@ -99,11 +100,15 @@ for i in range(n):
     matrix[i][i] = 1
 
 print('Print dict with edges:')
-print(d)
+print(', '.join([f'{k0+1,k1+1}: {v+1}' for (v,(k0,k1)) in enumerate(d)]))
 
 print('Print matrix:')
+print('')
+num = 0
 for row in matrix:
-    print(' '.join(map(str, row)))
+    num += 1
+    print(str(num) + '  ' + '  '.join(map(str, row)))
+    # print('{' + ', '.join(map(str, row)) + '},')
 
 
 if __name__ == '__main__':
