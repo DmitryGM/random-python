@@ -98,6 +98,8 @@ for i in range(12):
 for i in range(n):
     matrix[i][i] = 1
 
+print('Print dict with edges:')
+print(d)
 
 print('Print matrix:')
 for row in matrix:
