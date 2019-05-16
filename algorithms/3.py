@@ -18,9 +18,11 @@ def read_matrix():
             s = file.readline().split(' ')
             for j in range(n):
                 if i < j:
-                    if i - j == -1:
+
+                    if i - j == -1 or i == 0 and j == 11:
                         m[i][j] = 0
-                    m[i][j] = 0 if '-' in s[j] else 1
+                    else:
+                        m[i][j] = 0 if '-' in s[j] else 1
                 else:
                     m[i][j] = 0
         helper.print_matrix(m)
